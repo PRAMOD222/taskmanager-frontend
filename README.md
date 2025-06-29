@@ -1,36 +1,108 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Frontend - Task Management System
 
-## Getting Started
+## 🧰 Tech Stack Overview
 
-First, run the development server:
+- **Framework:** Next.js 14 (App Router)
+- **Language:** JavaScript / React
+- **Styling:** Tailwind CSS
+- **State Management:** Redux Toolkit
+- **Icons/UI Components:** React-icons, Shadcn/ui
+- **API Communication:** Axios
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 🛠️ Setup Instructions (Local Development)
+
+1. **Clone the repository**:
+    ```bash
+    git clone <your-repo-url>
+    cd <frontend-folder-name>
+    ```
+
+2. **Install dependencies**:
+    ```bash
+    npm install
+    ```
+
+3. **Start development server**:
+    ```bash
+    npm run dev
+    ```
+
+---
+
+## 🔐 Environment Variables
+
+Create a `.env.local` file in the root directory and define the following variable:
+
+```
+NEXT_PUBLIC_API_BASE_URL=http://localhost:3001/api
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Adjust the URL if your backend runs on a different host or port.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 👤 Default Admin Credentials
 
-## Learn More
+Use the following credentials to log in as an admin:
 
-To learn more about Next.js, take a look at the following resources:
+```
+Email: admin@example.com
+Password: Admin@123
+```
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+> Make sure these users exist in your backend or seed data.
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 📊 API Endpoints
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+All API calls are managed in `services/api.js`. Refer to the backend README for complete documentation of the following APIs:
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/api/users/*`
+- `/api/tasks/*`
+- `/api/analytics/*`
+
+These are consumed in relevant dashboard sections (admin/manager/employee).
+
+---
+
+## 🔐 Role Permission Matrix
+
+| Feature                       | Admin | Manager | Employee |
+|------------------------------|:-----:|:-------:|:--------:|
+| Access Dashboard             | ✅    | ✅      | ✅       |
+| Manage Users                 | ✅    | ✅      | ❌       |
+| Create Tasks                 | ✅    | ✅      | ✅       |
+| View All Tasks               | ✅    | ✅      | ❌       |
+| View Assigned Tasks          | ✅    | ✅      | ✅       |
+| Update Task Status           | ✅    | ✅      | ✅ (own) |
+| Assign Task to User          | ✅    | ✅      | ❌       |
+| Modify Task Priority         | ✅    | ✅      | ❌       |
+| Delete Task                  | ✅    | ✅      | ❌       |
+| View Analytics               | ✅    | ❌      | ❌       |
+
+---
+
+## 📁 Folder Structure Overview
+
+```
+app/
+├── dashboard/
+│   ├── admin/       → Admin views
+│   ├── manager/     → Manager views
+│   └── employee/    → Employee views
+├── login/           → Login page
+components/          → Shared UI components
+hooks/               → Custom hooks
+lib/                 → Utility functions
+redux/               → Redux Toolkit (store, slices)
+services/            → API service layer
+```
+
+---
+
+## ✅ Done!
+
+You’re now ready to run the frontend. Make sure the backend is running at the specified API base URL.
