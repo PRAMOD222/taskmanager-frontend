@@ -34,12 +34,15 @@ export default function LoginPage() {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)} className="p-4 flex flex-col gap-2">
-      <input placeholder="Email" {...register('email')} />
-      <p>{errors.email?.message}</p>
-      <input type="password" placeholder="Password" {...register('password')} />
-      <p>{errors.password?.message}</p>
-      <button type="submit">Login</button>
-    </form>
+    <div className=' min-h-screen items-center flex justify-center '>
+      <form onSubmit={handleSubmit(onSubmit)} className="p-4 flex flex-col gap-2 max-w-3xl border bg-gray-100">
+        <h2 className='text-2xl capitalize text-center'>Login</h2>
+        <input className="w-full border border-gray-300 rounded-md p-2 outline-none focus:outline-none focus:border-sky-500" placeholder="Email" {...register('email')} />
+        <p>{errors.email?.message}</p>
+        <input className="w-full border border-gray-300 rounded-md p-2 outline-none focus:outline-none focus:border-sky-500" type="password" placeholder="Password" {...register('password')} />
+        <p>{errors.password?.message}</p>
+        <button className="bg-sky-600 text-white px-4 py-2 rounded" type="submit">Login</button>
+      </form>
+    </div>
   );
 }

@@ -44,7 +44,9 @@ export default function TaskList({ tasks, onChange, users }) {
                         ${task.status === "In Progress" ? "bg-yellow-100 hover:bg-yellow-200" : ""} 
                         ${(task.status === "Pending" || task.status === "In Progress") && new Date(task.dueDate).toLocaleDateString() === new Date().toLocaleDateString() ? "bg-red-100 hover:bg-red-200" : ""}`}>
                             <TableCell>{task.title}</TableCell>
-                            <TableCell>{task.description}</TableCell>
+                            <TableCell>{task.description.length > 30 ?
+                                `${task.description.slice(0, 30)}...`
+                                : task.description}</TableCell>
                             <TableCell>{new Date(task.dueDate).toLocaleDateString()}</TableCell>
                             <TableCell>
                                 <TaskPriorityDropdown task={task} onPriorityChange={() => onChange(task._id)} />

@@ -73,7 +73,7 @@ export default function CreateTaskForm({ onTaskCreated }) {
                   onChange={(e) => setDueDate(e.target.value)}
                 />
               </div>
-              <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">
+              <button type="submit" className="bg-sky-600 text-white px-4 py-2 rounded">
                 Create Task
               </button>
             </form>
